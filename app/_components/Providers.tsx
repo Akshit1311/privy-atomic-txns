@@ -1,7 +1,8 @@
 "use client";
 
+import { env } from "@/env";
 import { PrivyProvider } from "@privy-io/react-auth";
-import { env } from "../env";
+import { createSolanaRpc, createSolanaRpcSubscriptions } from "@solana/kit";
 
 export default function Providers({ children }: { children: React.ReactNode }) {
   return (
@@ -16,6 +17,23 @@ export default function Providers({ children }: { children: React.ReactNode }) {
           },
           ethereum: {
             createOnLogin: "off",
+          },
+        },
+
+        solana: {
+          rpcs: {
+            // "solana:mainnet": {
+            //   rpc: createSolanaRpc("https://api.mainnet-beta.solana.com"),
+            //   rpcSubscriptions: createSolanaRpcSubscriptions(
+            //     "wss://api.mainnet-beta.solana.com"
+            //   ),
+            // },
+            "solana:devnet": {
+              rpc: createSolanaRpc("https://api.devnet.solana.com"),
+              rpcSubscriptions: createSolanaRpcSubscriptions(
+                "wss://api.devnet.solana.com"
+              ),
+            },
           },
         },
       }}
