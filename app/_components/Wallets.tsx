@@ -4,7 +4,7 @@ import { createClient } from "../_kit/client";
 import { address, airdropFactory, lamports, Lamports } from "@solana/kit";
 import { useEffect, useState } from "react";
 import Button from "./Button";
-import SendMoney from "./SendMoney";
+import SessionSigners from "./SessionSigners";
 
 const Wallets = () => {
   const { wallets, ready } = useWallets();
@@ -59,7 +59,7 @@ const Wallets = () => {
       ))}
 
       <div>
-        <SendMoney />
+        <SessionSigners />
       </div>
     </div>
   );
